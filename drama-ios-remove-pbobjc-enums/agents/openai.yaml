@@ -1,0 +1,4 @@
+interface:
+  display_name: "PB Enum Cleanup"
+  short_description: "按 git status 清理 drama-ios 的 pbobjc 枚举辅助代码"
+  default_prompt: "Use $drama-ios-remove-pbobjc-enums to clean generated pbobjc enum helper code from the current git status in drama-ios."
