@@ -1,0 +1,7 @@
+interface:
+  display_name: "Drama iOS Refactor Architect"
+  short_description: "iOS 复杂业务重构架构方案"
+  default_prompt: "Use $drama-ios-refactor-architect to inspect this iOS business coupling and produce a grounded refactor plan."
+
+policy:
+  allow_implicit_invocation: true
