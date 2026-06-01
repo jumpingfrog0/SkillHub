@@ -1,0 +1,4 @@
+interface:
+  display_name: "Git Rebase Flow"
+  short_description: "Guide rebase and no-ff branch merges"
+  default_prompt: "Use $git-rebase-flow to rebase my development branch onto its main branch, merge it back with --no-ff, and push safely."
