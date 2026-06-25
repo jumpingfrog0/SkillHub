@@ -1,0 +1,4 @@
+interface:
+  display_name: "Git Maint Merge Flow"
+  short_description: "Standard rebase and no-ff maint merge workflow"
+  default_prompt: "Use $git-merge-maint-flow to merge my feature branch into a maintenance branch with rebase, no-ff merge, push, and conflict recovery."
