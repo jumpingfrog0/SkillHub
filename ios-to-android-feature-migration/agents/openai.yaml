@@ -1,0 +1,4 @@
+interface:
+  display_name: "iOS to Android Feature Migration"
+  short_description: "基于 iOS 功能梳理文档生成 Android 迁移方案并闭环实施"
+  default_prompt: "Use $ios-to-android-feature-migration to generate and confirm an Android migration plan before implementing a completed iOS feature in famo-android."
