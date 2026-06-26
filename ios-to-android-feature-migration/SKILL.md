@@ -1,6 +1,6 @@
 ---
 name: ios-to-android-feature-migration
-description: Use when migrating a completed iOS feature from drama-ios to famo-android, based on feature-discovery final business and technical documents. Requires writing an Android migration plan first and waiting for user confirmation before modifying Android code.
+description: Use when migrating a completed iOS feature from drama-ios to famo-android, based on feature-discovery final business and technical documents. Also use when upstream iOS feature-discovery documents were supplemented, corrected, or found incomplete after an Android migration plan was written, or when user review feedback requires directly correcting the Android technical migration plan before implementation. Requires writing or updating the Android migration plan first and waiting for user confirmation before modifying Android code.
 ---
 
 # iOS to Android Feature Migration
@@ -11,12 +11,11 @@ Use this skill to migrate an already completed iOS feature from `drama-ios` to `
 
 This skill owns:
 
-- Reading the iOS feature-discovery final business and technical documents.
-- Checking critical iOS code evidence only to validate migration-critical facts.
-- Mapping iOS behavior and implementation facts to Android modules, interfaces, resources, storage, network, analytics, and verification.
-- Writing an Android migration plan before any Android code change.
-- Implementing Android changes only after the user confirms the written plan.
-- Producing implementation and acceptance records after implementation.
+- Consuming final iOS `feature-discovery` documents.
+- Validating migration-critical iOS facts with targeted code checks.
+- Writing, refreshing, or correcting `Android迁移方案.md`.
+- Implementing Android only after the current plan is explicitly confirmed.
+- Producing implementation and acceptance records.
 
 This skill does not own:
 
@@ -27,12 +26,14 @@ This skill does not own:
 
 ## Required Inputs
 
-Before starting a real migration, locate and read both final feature-discovery documents:
+Before starting a real migration, locate the iOS repository first, then read both final feature-discovery documents from the iOS repository:
 
 ```text
-.huangdonghong/docs/<feature-slug>/<feature-name>业务梳理.md
-.huangdonghong/docs/<feature-slug>/<feature-name>技术实现梳理.md
+<ios-repo>/.huangdonghong/docs/<feature-slug>/<feature-name>业务梳理.md
+<ios-repo>/.huangdonghong/docs/<feature-slug>/<feature-name>技术实现梳理.md
 ```
+
+Default `<ios-repo>` is `../drama-ios` relative to the Android repository `famo-android`. Do not search the Android repository `.huangdonghong/docs` as the required iOS feature-discovery input location.
 
 If either document is missing, stop the migration workflow and instruct the user to run `feature-discovery` for the iOS feature first. Do not infer the migration plan directly from iOS code when the final documents are absent.
 
@@ -49,11 +50,13 @@ Before writing a migration plan or editing Android code:
 
 ## Output Directory
 
-For a real migration, write all migration artifacts under:
+For a real migration, write all Android migration artifacts under the Android repository:
 
 ```text
-.huangdonghong/feature-migration/<feature-slug>/
+<android-repo>/.huangdonghong/feature-migration/<feature-slug>/
 ```
+
+Default `<android-repo>` is the current `famo-android` repository. The iOS feature-discovery input documents stay in `<ios-repo>/.huangdonghong/docs`; the Android migration plan and delivery records stay in `<android-repo>/.huangdonghong/feature-migration`.
 
 The required artifact files are:
 
@@ -65,18 +68,51 @@ Android迁移验收报告.md
 
 `Android迁移方案.md` is a required coding gate. If it has not been written, Android production code must not be modified.
 
-## Workflow
+## First-Time Migration Workflow
 
 1. Read Android repository constraints and relevant project documentation.
 2. Locate the iOS repository and read its applicable local constraints.
-3. Locate and read the two final feature-discovery documents.
+3. Locate and read the two final feature-discovery documents from `<ios-repo>/.huangdonghong/docs`.
 4. Read `references/ios-evidence-checklist.md`, then inspect only the iOS evidence needed to validate migration-critical facts.
 5. Read `references/android-analysis-checklist.md`, then inspect Android code to identify the correct module, entry points, interfaces, resources, data flow, storage, analytics, and existing patterns.
-6. Read `references/migration-plan-template.md`, then write `.huangdonghong/feature-migration/<feature-slug>/Android迁移方案.md`.
-7. Report the plan path and wait for explicit user confirmation.
-8. After confirmation, read `references/implementation-checklist.md` and implement the Android changes exactly within the confirmed scope.
-9. Run only validation commands allowed by the Android project constraints.
-10. Read `references/delivery-report-template.md`, then write `Android迁移实施记录.md` and `Android迁移验收报告.md`.
+6. Read `references/migration-plan-template.md`, then write `<android-repo>/.huangdonghong/feature-migration/<feature-slug>/Android迁移方案.md`.
+7. Apply `Plan Quality Gate`, report the plan path, and wait for explicit user confirmation.
+8. After confirmation, read `references/implementation-checklist.md`, implement within the confirmed scope, run allowed validation only, then write delivery records from `references/delivery-report-template.md`.
+
+## Plan Refresh Workflow
+
+Use this workflow when `Android迁移方案.md` already exists and the user says the iOS feature-discovery documents were supplemented, corrected, found incomplete, or updated after plan review.
+
+1. Do not modify Android production code.
+2. Read the latest feature-discovery documents from `<ios-repo>/.huangdonghong/docs`.
+3. Read the existing `<android-repo>/.huangdonghong/feature-migration/<feature-slug>/Android迁移方案.md`.
+4. Read `references/plan-refresh-checklist.md`.
+5. Compare the latest iOS documents with the existing Android migration plan.
+6. Update the same `Android迁移方案.md`, including `需求补充影响评估` and every affected execution section.
+7. Set plan status to `待重新确认`, or `阻塞，待确认` if a blocking issue remains.
+8. Apply `Plan Quality Gate`, then stop and wait for explicit user confirmation.
+
+## Plan Review Adjustment Workflow
+
+Use this workflow when `Android迁移方案.md` already exists and the user says the Android technical plan, module choice, implementation path, file list, validation plan, or risk judgment is unreasonable and must be adjusted before implementation. Use `Plan Refresh Workflow` instead when the change comes from updated iOS feature-discovery documents.
+
+1. Do not modify Android production code.
+2. Read the existing `<android-repo>/.huangdonghong/feature-migration/<feature-slug>/Android迁移方案.md`.
+3. Read `references/plan-review-adjustment-checklist.md`.
+4. Apply the user review feedback by directly rewriting the affected plan sections.
+5. Keep the plan as one clean, current implementation plan; do not record old wording, adjustment reasons, or review history.
+6. Set plan status to `待确认`, or `阻塞，待确认` if a blocking issue remains.
+7. Apply `Plan Quality Gate`, then stop and wait for explicit user confirmation.
+
+## Plan Quality Gate
+
+Apply this gate after writing or updating `Android迁移方案.md` and before reporting completion:
+
+- Executable sections must contain one chosen implementation path. This includes `Android实现方案`, `文件改动清单`, `验证计划`, and `风险与待确认问题`.
+- Do not leave unresolved alternatives as execution conclusions, including `A 或 B`, `A/B`, `可选`, `也可以`, `方案一/方案二`, or `实现时决定`.
+- If code evidence, project rules, or existing patterns decide the issue, choose one path and update all affected sections.
+- If the issue cannot be decided from evidence, move it to `风险与待确认问题`, set status to `阻塞，待确认`, and stop.
+- If unresolved alternatives remain in executable sections, the plan is not ready for confirmation or implementation.
 
 ## Hard Gates
 
@@ -86,6 +122,9 @@ Android迁移验收报告.md
 - No explicit user confirmation of the migration plan: do not edit Android production code.
 - Blocking open questions in the migration plan: do not edit Android production code until resolved.
 - Conflict between feature-discovery documents and checked iOS code: record the conflict in the migration plan and stop if it affects implementation decisions.
+- Upstream iOS feature-discovery documents changed after `Android迁移方案.md` was written: treat the existing plan as stale, refresh the same plan file, and wait for user confirmation again before editing Android code.
+- Existing plan status is `待确认`, `待重新确认`, or `阻塞，待确认`: do not edit Android production code.
+- Unresolved alternatives remain in executable plan sections: choose one path or mark the plan as `阻塞，待确认`; do not treat the plan as ready.
 
 ## Evidence Rules
 
@@ -105,5 +144,7 @@ Load references only when their workflow step is reached:
 - `references/ios-evidence-checklist.md`: before targeted iOS evidence inspection.
 - `references/android-analysis-checklist.md`: before Android implementation analysis.
 - `references/migration-plan-template.md`: before writing `Android迁移方案.md`.
+- `references/plan-refresh-checklist.md`: when an existing Android migration plan must be refreshed after upstream iOS feature-discovery documents were supplemented or corrected.
+- `references/plan-review-adjustment-checklist.md`: when user review feedback requires directly correcting the Android technical migration plan before implementation.
 - `references/implementation-checklist.md`: after plan confirmation and before code edits.
 - `references/delivery-report-template.md`: after implementation and before writing delivery records.

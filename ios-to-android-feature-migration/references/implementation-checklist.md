@@ -6,9 +6,12 @@ Use this checklist only after the user confirms `Android迁移方案.md`.
 
 Before editing Android code, confirm:
 
-- `Android迁移方案.md` exists under `.huangdonghong/feature-migration/<feature-slug>/`.
-- The user explicitly confirmed the plan.
+- `Android迁移方案.md` exists under `<android-repo>/.huangdonghong/feature-migration/<feature-slug>/`.
+- The user explicitly confirmed the current `Android迁移方案.md`.
+- The confirmed plan reflects the latest iOS feature-discovery documents.
+- The plan status is not `待确认`, `待重新确认`, or `阻塞，待确认`.
 - The plan has no blocking open questions.
+- The plan has no unresolved alternatives in executable sections.
 - The intended edits match the confirmed file/change scope.
 - Android repository constraints have been read in the current task.
 
