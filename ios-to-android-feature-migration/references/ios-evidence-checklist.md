@@ -5,6 +5,7 @@ Use this checklist for targeted evidence checking after reading the final featur
 ## Repository Setup
 
 - Confirm the iOS repository path, defaulting to `../drama-ios`.
+- Read the final feature-discovery documents from `<ios-repo>/.huangdonghong/docs`, not from the Android repository `.huangdonghong/docs`.
 - Read applicable iOS repository instructions before inspecting code.
 - Search from the feature names, classes, files, APIs, routes, config keys, analytics names, and resources listed in the feature-discovery documents.
 

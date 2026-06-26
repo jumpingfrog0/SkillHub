@@ -3,10 +3,17 @@
 Use this template for:
 
 ```text
-.huangdonghong/feature-migration/<feature-slug>/Android迁移方案.md
+<android-repo>/.huangdonghong/feature-migration/<feature-slug>/Android迁移方案.md
 ```
 
 The plan must be written before Android code changes and must be confirmed by the user before implementation.
+
+The input feature-discovery documents must come from the iOS repository, not from the Android repository:
+
+```text
+<ios-repo>/.huangdonghong/docs/<feature-slug>/<feature-name>业务梳理.md
+<ios-repo>/.huangdonghong/docs/<feature-slug>/<feature-name>技术实现梳理.md
+```
 
 ## Header
 
@@ -16,11 +23,18 @@ The plan must be written before Android code changes and must be confirmed by th
 - 作者：huangdonghong
 - Android仓库：famo-android
 - iOS仓库：drama-ios
-- 输入业务文档：<path>
-- 输入技术文档：<path>
-- 输出目录：.huangdonghong/feature-migration/<feature-slug>/
+- 输入业务文档：<ios-repo>/.huangdonghong/docs/<feature-slug>/<feature-name>业务梳理.md
+- 输入技术文档：<ios-repo>/.huangdonghong/docs/<feature-slug>/<feature-name>技术实现梳理.md
+- 输出目录：<android-repo>/.huangdonghong/feature-migration/<feature-slug>/
 - 状态：待确认
 ```
+
+Allowed status values:
+
+- `待确认`: first version of the plan is waiting for user review.
+- `待重新确认`: the plan was refreshed after upstream iOS documents changed and must be reviewed again.
+- `阻塞，待确认`: blocking questions remain and implementation is not allowed.
+- `已确认`: the user explicitly confirmed the current plan version.
 
 ## Required Sections
 
@@ -59,7 +73,7 @@ Summarize only facts supported by feature-discovery documents or targeted code e
 
 ### 5. Android实现方案
 
-Provide a single decision-complete implementation path:
+Provide one decision-complete implementation path:
 
 - Target module and package.
 - Classes, layouts, resources, protocol interfaces, and data models to add or modify.
@@ -71,7 +85,12 @@ Provide a single decision-complete implementation path:
 - Analytics/logging changes.
 - Error, empty, loading, disabled, fallback, and edge states.
 
-Do not list competing options as the conclusion. If alternatives were considered, put them in a short "discarded alternatives" note with the chosen path clearly stated.
+Decision completeness check:
+
+- Keep only the current chosen path in executable content.
+- Do not use unresolved alternatives such as `A 或 B`, `A/B`, `可选`, `也可以`, `方案一/方案二`, or `实现时决定`.
+- If alternatives were considered, mention only discarded alternatives briefly and keep them out of the execution path.
+- If one path cannot be chosen from evidence, move the unresolved decision to `风险与待确认问题` and set status to `阻塞，待确认`.
 
 ### 6. 文件改动清单
 
@@ -103,3 +122,24 @@ Explicitly state prohibited commands that will not be run, such as Gradle, adb, 
 - Product or backend dependencies.
 
 If any blocking question remains, set plan status to "阻塞，待确认" and do not implement.
+
+## Requirement Supplement Section
+
+When the plan is refreshed after upstream iOS feature-discovery documents were supplemented or corrected, add or update:
+
+```markdown
+### 需求补充影响评估
+
+- 补充来源业务文档：<ios-repo>/.huangdonghong/docs/<feature-slug>/<feature-name>业务梳理.md
+- 补充来源技术文档：<ios-repo>/.huangdonghong/docs/<feature-slug>/<feature-name>技术实现梳理.md
+- 本次刷新时间：<YYYY-MM-DD HH:mm>
+- 新增/变化需求点：
+  - <requirement change>
+- Android影响范围：
+  - <affected Android scope or "无实现影响">
+- 方案更新结论：
+  - <sections/files/risks/validation updated>
+- 阻塞问题：<无 or blocking question>
+```
+
+If the supplement does not change Android implementation, still keep this section and set the plan status to `待重新确认`.

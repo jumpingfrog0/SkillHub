@@ -8,7 +8,7 @@ Use this template after Android implementation.
 # <功能名> Android迁移实施记录
 
 - 作者：huangdonghong
-- 迁移方案：.huangdonghong/feature-migration/<feature-slug>/Android迁移方案.md
+- 迁移方案：<android-repo>/.huangdonghong/feature-migration/<feature-slug>/Android迁移方案.md
 - 状态：已实施
 
 ## 1. 实际改动摘要
