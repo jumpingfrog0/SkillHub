@@ -68,6 +68,31 @@ Android迁移验收报告.md
 
 `Android迁移方案.md` is a required coding gate. If it has not been written, Android production code must not be modified.
 
+## Migration Type Decision
+
+Before choosing a workflow, classify the request:
+
+- `首次迁移`: the current migration target has no corresponding `Android迁移方案.md`; use `First-Time Migration Workflow`.
+- `方案刷新`: the current migration has not completed implementation and delivery records, and the user says the existing plan must be revised from updated iOS inputs; use `Plan Refresh Workflow`.
+- `评审调整`: the current migration has not completed implementation and delivery records, and the user asks to adjust the existing technical migration plan before implementation; use `Plan Review Adjustment Workflow`.
+- `新的迁移需求`: related migration artifacts exist, but the user is asking for later-added capability or a new target after the related migration already completed; generate a new `<feature-slug>` and use `First-Time Migration Workflow`.
+
+## Completed Migration Protection
+
+If a migration directory contains both `Android迁移实施记录.md` and `Android迁移验收报告.md`, treat its `Android迁移方案.md` as a historical migration baseline.
+
+Historical migration baselines are read-only. 历史迁移基准只读，不得改为 `待重新确认`，不得按后续事实反向改写。Do not refresh them from later facts, and do not rewrite them to match later implementation or newer upstream documents.
+
+Conclusions in a historical baseline represent only that migration's scope and facts at the time. They are not blockers for a later `新的迁移需求`.
+
+For `新的迁移需求`, create a new `<feature-slug>` and write the standard artifact set under:
+
+```text
+<android-repo>/.huangdonghong/feature-migration/<new-feature-slug>/
+```
+
+Do not create an `increments/` directory and do not create `Android增量迁移方案.md`.
+
 ## First-Time Migration Workflow
 
 1. Read Android repository constraints and relevant project documentation.
@@ -81,7 +106,9 @@ Android迁移验收报告.md
 
 ## Plan Refresh Workflow
 
-Use this workflow when `Android迁移方案.md` already exists and the user says the iOS feature-discovery documents were supplemented, corrected, found incomplete, or updated after plan review.
+Use this workflow only when `Android迁移方案.md` already exists, implementation has not completed, delivery records are not both present, and the user says the iOS feature-discovery documents were supplemented, corrected, found incomplete, or updated after plan review.
+
+If implementation and delivery records are both present, do not use this workflow. Treat the existing plan as a historical migration baseline and classify later-added capability as `新的迁移需求`.
 
 1. Do not modify Android production code.
 2. Read the latest feature-discovery documents from `<ios-repo>/.huangdonghong/docs`.
@@ -94,7 +121,9 @@ Use this workflow when `Android迁移方案.md` already exists and the user says
 
 ## Plan Review Adjustment Workflow
 
-Use this workflow when `Android迁移方案.md` already exists and the user says the Android technical plan, module choice, implementation path, file list, validation plan, or risk judgment is unreasonable and must be adjusted before implementation. Use `Plan Refresh Workflow` instead when the change comes from updated iOS feature-discovery documents.
+Use this workflow when `Android迁移方案.md` already exists, implementation has not completed, delivery records are not both present, and the user says the Android technical plan, module choice, implementation path, file list, validation plan, or risk judgment is unreasonable and must be adjusted before implementation. Use `Plan Refresh Workflow` instead when the change comes from updated iOS feature-discovery documents.
+
+If implementation and delivery records are both present, do not use this workflow. Treat the existing plan as a historical migration baseline and classify later-added capability as `新的迁移需求`.
 
 1. Do not modify Android production code.
 2. Read the existing `<android-repo>/.huangdonghong/feature-migration/<feature-slug>/Android迁移方案.md`.
@@ -122,7 +151,8 @@ Apply this gate after writing or updating `Android迁移方案.md` and before re
 - No explicit user confirmation of the migration plan: do not edit Android production code.
 - Blocking open questions in the migration plan: do not edit Android production code until resolved.
 - Conflict between feature-discovery documents and checked iOS code: record the conflict in the migration plan and stop if it affects implementation decisions.
-- Upstream iOS feature-discovery documents changed after `Android迁移方案.md` was written: treat the existing plan as stale, refresh the same plan file, and wait for user confirmation again before editing Android code.
+- Upstream iOS feature-discovery documents changed before implementation completed: treat the existing plan as stale, refresh the same plan file, and wait for user confirmation again before editing Android code.
+- Upstream iOS feature-discovery documents changed after implementation and delivery records completed: keep the existing plan read-only as a historical migration baseline and start a `新的迁移需求` with a new `<feature-slug>`.
 - Existing plan status is `待确认`, `待重新确认`, or `阻塞，待确认`: do not edit Android production code.
 - Unresolved alternatives remain in executable plan sections: choose one path or mark the plan as `阻塞，待确认`; do not treat the plan as ready.
 

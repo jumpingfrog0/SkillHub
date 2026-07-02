@@ -8,6 +8,7 @@ Before editing Android code, confirm:
 
 - `Android迁移方案.md` exists under `<android-repo>/.huangdonghong/feature-migration/<feature-slug>/`.
 - The user explicitly confirmed the current `Android迁移方案.md`.
+- The current `Android迁移方案.md` belongs to this migration target, not to a completed historical migration used only as background.
 - The confirmed plan reflects the latest iOS feature-discovery documents.
 - The plan status is not `待确认`, `待重新确认`, or `阻塞，待确认`.
 - The plan has no blocking open questions.

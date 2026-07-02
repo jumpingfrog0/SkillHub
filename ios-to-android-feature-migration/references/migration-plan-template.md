@@ -25,9 +25,12 @@ The input feature-discovery documents must come from the iOS repository, not fro
 - iOS仓库：drama-ios
 - 输入业务文档：<ios-repo>/.huangdonghong/docs/<feature-slug>/<feature-name>业务梳理.md
 - 输入技术文档：<ios-repo>/.huangdonghong/docs/<feature-slug>/<feature-name>技术实现梳理.md
+- 关联历史迁移基准：<无 / <android-repo>/.huangdonghong/feature-migration/<historical-feature-slug>/Android迁移方案.md>
 - 输出目录：<android-repo>/.huangdonghong/feature-migration/<feature-slug>/
 - 状态：待确认
 ```
+
+`关联历史迁移基准` is optional and only records read-only background from a completed related migration. It is not the approval baseline for the current migration and must not be modified by the current plan.
 
 Allowed status values:
 

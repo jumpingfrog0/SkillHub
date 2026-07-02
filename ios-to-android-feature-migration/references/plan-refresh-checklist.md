@@ -1,10 +1,13 @@
 # Plan Refresh Checklist
 
-Use this checklist when an existing `Android迁移方案.md` must be refreshed because upstream iOS feature-discovery documents were supplemented, corrected, or found incomplete after the plan was written.
+Use this checklist when an existing `Android迁移方案.md` must be refreshed because upstream iOS feature-discovery documents were supplemented, corrected, or found incomplete after the plan was written, and the migration has not completed implementation and delivery records.
+
+Do not use this checklist when `Android迁移实施记录.md` and `Android迁移验收报告.md` both exist for the same migration directory. In that case, the existing `Android迁移方案.md` is a historical migration baseline and remains read-only. Later-added capability must be handled as a new migration target with a new `<feature-slug>`.
 
 ## Gate
 
 - Update the existing `<android-repo>/.huangdonghong/feature-migration/<feature-slug>/Android迁移方案.md`.
+- This gate applies only to an unfinished migration. If implementation and acceptance records both exist, stop and switch to a new migration target.
 - After refresh, set the plan status to `待重新确认`, or `阻塞，待确认` if a blocking issue remains.
 - Do not carry over an earlier confirmation automatically. The refreshed plan requires explicit user confirmation again.
 
