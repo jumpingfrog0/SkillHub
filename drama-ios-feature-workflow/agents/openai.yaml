@@ -1,0 +1,4 @@
+interface:
+  display_name: "Drama iOS 需求工作流"
+  short_description: "以阶段门禁推进 iOS 新业务需求"
+  default_prompt: "Use $drama-ios-feature-workflow to start or continue an approved iOS feature workflow."
