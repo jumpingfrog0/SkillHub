@@ -1,0 +1,22 @@
+discuss-design-decisions/SKILL.md
+  s_98bb1c994e16b1::t_fe697082d93c95 1-66
+discuss-design-decisions/agents/openai.yaml
+  s_98bb1c994e16b1::t_1b8f53ac207fb2 1-4
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "c730ed0d92380c572eadbf05bb0bc31beca2c5f6",
+  "prompts": {},
+  "logical_commit_id": "c730ed0d92380c572eadbf05bb0bc31beca2c5f6",
+  "sessions": {
+    "s_98bb1c994e16b1": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f7e6e-8cc0-7132-8940-3dbea463294a",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "jumpingfrog0 <jumpingfrog0@gmail.com>"
+    }
+  }
+}
