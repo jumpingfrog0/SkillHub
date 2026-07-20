@@ -1,0 +1,4 @@
+interface:
+  display_name: "逐项设计决策讨论"
+  short_description: "将复杂架构取舍拆分为逐项讨论、明确确认并可安全实施的决策流程"
+  default_prompt: "Use $discuss-design-decisions to help me review this design one decision at a time."
