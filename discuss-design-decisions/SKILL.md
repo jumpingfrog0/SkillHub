@@ -1,6 +1,6 @@
 ---
 name: discuss-design-decisions
-description: Break a complex technical or architectural proposal into ordered, atomic decisions and discuss them with the user one at a time until each relevant tradeoff is confirmed, deferred, or rejected. Use when the user asks to discuss issues step by step or one by one, when a design review contains several coupled choices, when evaluating possible overengineering, or when implementation must wait for explicit decisions about behavior, ownership, dependencies, naming, lifecycle, or compatibility. Do not use for a single straightforward question, an already-approved implementation, or as a replacement for a stricter formal workflow.
+description: Break a complex technical or architectural proposal into ordered, atomic decisions, discuss them with the user one at a time, and require a separate final implementation approval before modifying code. Use when the user asks to discuss issues step by step or one by one, when a design review contains several coupled choices, when evaluating possible overengineering, or when implementation must wait for explicit decisions about behavior, ownership, dependencies, naming, lifecycle, or compatibility. Do not use for a single straightforward question, an already-approved implementation, or as a replacement for a stricter formal workflow.
 ---
 
 # Discuss Design Decisions
@@ -15,6 +15,7 @@ Guide a focused design conversation that produces explicit decisions without ove
 4. Order the decisions by dependency so that later discussions can rely on earlier conclusions.
 5. Present only the short ordered list first. Do not include the full solution unless the user asks for it.
 6. Track each item internally as `pending`, `confirmed`, `deferred`, or `rejected`.
+7. Track the workflow phase as `discussing`, `awaiting_implementation_approval`, or `implementing`.
 
 ## Discuss one decision at a time
 
@@ -41,8 +42,15 @@ Keep each round compact. Do not preview detailed solutions for later items.
 ## Control implementation
 
 - Do not modify code merely because a design is being discussed.
-- Start implementation only when the user requests it and every decision required for that implementation scope is confirmed.
-- If the user requests partial implementation, implement only confirmed items and preserve deferred behavior unchanged.
+- Treat an initial request to design and implement as intent for eventual implementation, not as final approval after the decision phase.
+- Never treat confirmation of an individual decision, including the last pending decision, as approval to begin implementation.
+- After all decisions required for the intended scope are confirmed or explicitly excluded, set the phase to `awaiting_implementation_approval`.
+- In that phase, summarize the final implementation scope and any deferred or excluded items, then explicitly ask whether to begin implementation. End the turn and wait for a new user response.
+- Accept any unambiguous affirmative response such as “approved,” “start implementation,” or “implement this plan”; do not require a magic word.
+- Start implementation only after that new affirmative response, then set the phase to `implementing`.
+- Skip the separate final approval only when the user explicitly instructs Codex to implement automatically after the decisions are complete or otherwise says that no final confirmation is needed.
+- Treat a new request to implement a clearly delimited confirmed subset as approval for that subset only; preserve deferred behavior unchanged.
+- If the user requests changes instead of approving, return to `discussing` and update the decision map.
 - Stop and surface any newly discovered choice that would alter visible behavior, state retention, API semantics, compatibility, or another confirmed boundary.
 - After implementation, distinguish completed work from remaining deferred decisions.
 
@@ -63,4 +71,6 @@ Summarize only when requested or when the decision phase is complete.
 - Asking the user to choose between options without making a recommendation.
 - Repeating all confirmed conclusions before every new question.
 - Allowing a deferred decision to leak into implementation through an unstated assumption.
+- Treating the answer to the final decision as approval of the whole implementation.
+- Inferring final implementation approval from the initial request or announcing implementation before receiving a new affirmative response.
 - Replacing an applicable project or formal workflow; use this skill only as its discussion protocol.
