@@ -1,0 +1,20 @@
+discuss-design-decisions/SKILL.md
+  s_98bb1c994e16b1::t_6b559fc39ef60a 3,18,45-53,74-75
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "618ba7c80d31b15dadf54852f73b2f6eb5dd6748",
+  "prompts": {},
+  "logical_commit_id": "618ba7c80d31b15dadf54852f73b2f6eb5dd6748",
+  "sessions": {
+    "s_98bb1c994e16b1": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f7e6e-8cc0-7132-8940-3dbea463294a",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "jumpingfrog0 <jumpingfrog0@gmail.com>"
+    }
+  }
+}
