@@ -1,0 +1,4 @@
+interface:
+  display_name: "Generate Weekly Report"
+  short_description: "汇总 Git 与 Codex 证据，生成面向汇报的精炼周报"
+  default_prompt: "使用 $generate-weekly-report，根据我提供的代码目录、作者和时间范围生成一份按技术建设与需求交付组织的精炼周报。"
