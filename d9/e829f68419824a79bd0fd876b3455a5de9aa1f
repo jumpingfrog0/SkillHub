@@ -1,0 +1,20 @@
+generate-weekly-report/scripts/collect_git_activity.py
+  s_530ba450713d1f::t_d780c80090c1f6 1-199
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "d9e829f68419824a79bd0fd876b3455a5de9aa1f",
+  "prompts": {},
+  "logical_commit_id": "d9e829f68419824a79bd0fd876b3455a5de9aa1f",
+  "sessions": {
+    "s_530ba450713d1f": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f840f-4f76-7b92-9b51-40c1fa39565d",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "jumpingfrog0 <jumpingfrog0@gmail.com>"
+    }
+  }
+}
