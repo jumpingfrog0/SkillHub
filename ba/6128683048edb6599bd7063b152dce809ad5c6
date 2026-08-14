@@ -1,0 +1,17 @@
+discuss-design-decisions/SKILL.md
+  h_82a5b866197337 3,10-28,51-62,108-113
+discuss-design-decisions/agents/openai.yaml
+  h_82a5b866197337 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "ba6128683048edb6599bd7063b152dce809ad5c6",
+  "prompts": {},
+  "logical_commit_id": "ba6128683048edb6599bd7063b152dce809ad5c6",
+  "humans": {
+    "h_82a5b866197337": {
+      "author": "jumpingfrog0 <jumpingfrog0@gmail.com>"
+    }
+  }
+}
