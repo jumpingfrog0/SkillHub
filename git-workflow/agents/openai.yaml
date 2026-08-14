@@ -1,0 +1,4 @@
+interface:
+  display_name: "Git Workflow"
+  short_description: "Commit changes and merge maintenance branches safely"
+  default_prompt: "Use $git-workflow to commit my changes using repository rules or safely merge my feature branch into a maintenance branch."
