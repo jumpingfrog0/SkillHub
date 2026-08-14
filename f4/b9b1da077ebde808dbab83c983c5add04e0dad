@@ -1,0 +1,20 @@
+git-workflow/agents/openai.yaml
+  s_4c3c48a783f0e9::t_b56d3eb4408495 1-4
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "f4b9b1da077ebde808dbab83c983c5add04e0dad",
+  "prompts": {},
+  "logical_commit_id": "f4b9b1da077ebde808dbab83c983c5add04e0dad",
+  "sessions": {
+    "s_4c3c48a783f0e9": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019ffe76-1ecb-74c0-8299-cc0f0d2b12c3",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "jumpingfrog0 <jumpingfrog0@gmail.com>"
+    }
+  }
+}
