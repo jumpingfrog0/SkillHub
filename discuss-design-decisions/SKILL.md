@@ -1,11 +1,30 @@
 ---
 name: discuss-design-decisions
-description: Break a complex technical or architectural proposal into ordered, atomic decisions, discuss them with the user one at a time, and require a separate final implementation approval before modifying code. Use when the user asks to discuss issues step by step or one by one, when a design review contains several coupled choices, when evaluating possible overengineering, or when implementation must wait for explicit decisions about behavior, ownership, dependencies, naming, lifecycle, or compatibility. Do not use for a single straightforward question, an already-approved implementation, or as a replacement for a stricter formal workflow.
+description: Use stepwise discussion for high-impact design decisions before implementation. Trigger only when the user explicitly asks to decide one by one, or when a large proposal has coupled, user-owned choices with no safe default and autonomous resolution risks major behavior, compatibility, ownership, API, lifecycle, or state consequences. Otherwise decide technical details autonomously and report the result. Do not trigger for ordinary plans, reviews, refactors, naming, local or reversible choices, one ambiguity, or requests for a direct or autonomous answer. Ask one focused question for one required clarification. Do not replace stricter formal workflows.
 ---
 
 # Discuss Design Decisions
 
 Guide a focused design conversation that produces explicit decisions without overwhelming the user.
+
+## Decide whether to enter
+
+Enter only when one of these conditions is true:
+
+1. The user explicitly requests step-by-step or one-by-one decision discussion.
+2. All of the following are true:
+   - Multiple unresolved decisions materially depend on one another.
+   - The choices belong to the user because they set product behavior, compatibility boundaries, ownership, public API semantics, lifecycle guarantees, state retention, or similarly consequential intent.
+   - No safe default or clearly superior option can be established from current evidence.
+   - Autonomous resolution could create substantial behavioral risk or costly rework.
+
+Treat naming, code organization, private implementation, reversible local abstractions, and choices with a clear best practice as agent-owned. Resolve them autonomously even when the surrounding task is technically complex.
+
+Do not enter this workflow solely because the user asks whether a proposal is overengineered. Evaluate it directly unless the activation gate is independently satisfied.
+
+If only one specific material ambiguity remains, ask one focused confirmation question without activating this workflow.
+
+Treat instructions such as “自主决策”, “直接给结论”, “不需要逐项确认”, “不要进入分步讨论”, or equivalent wording as an explicit opt-out from implicit activation. Make the technical decisions independently and summarize them afterward. This opt-out does not authorize inventing missing product requirements or overriding repository rules that require confirmation for a concrete behavior change.
 
 ## Establish the decision map
 
@@ -29,6 +48,18 @@ For the current item:
 6. Ask for confirmation before moving to the next dependent decision.
 
 Keep each round compact. Do not preview detailed solutions for later items.
+
+## Continue or exit
+
+Apply the entry gate only when deciding whether to start the workflow. Once legitimately entered, continue while at least one mapped user-owned decision remains unresolved. Do not exit merely because the number of remaining decisions decreases.
+
+Exit the workflow when any of these conditions is true:
+
+- The user asks for autonomous decisions, a direct conclusion, or no further confirmations.
+- The remaining choices are agent-owned, routine, reversible, or have a clear best option.
+- New evidence removes the material uncertainty or dependency that justified stepwise discussion.
+
+On exit, resolve remaining agent-owned choices autonomously and provide the requested conclusion or plan. If a concrete product or compatibility ambiguity still cannot safely be inferred, ask one focused question outside this workflow.
 
 ## Process user feedback
 
@@ -74,3 +105,9 @@ Summarize only when requested or when the decision phase is complete.
 - Treating the answer to the final decision as approval of the whole implementation.
 - Inferring final implementation approval from the initial request or announcing implementation before receiving a new affirmative response.
 - Replacing an applicable project or formal workflow; use this skill only as its discussion protocol.
+- Activating for an ordinary plan, review, refactor, naming discussion, or isolated implementation tradeoff.
+- Treating the words “讨论”, “方案”, “设计”, or “过度设计” as sufficient activation signals by themselves.
+- Continuing the workflow after the user asks for autonomous decisions or a direct conclusion.
+- Turning a single repository-required confirmation into a multi-round decision process.
+- Using the number of decisions as a proxy for whether the user must decide them.
+- Exiting a valid workflow only because fewer decisions remain after confirmation.
