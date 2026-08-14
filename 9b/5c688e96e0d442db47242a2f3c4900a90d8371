@@ -1,32 +1,31 @@
+drama-ios-feature-workflow/SKILL.md
+  h_82a5b866197337 3,8,13,15,23-25,29-33,37,39-43,48-49,56,58
 drama-ios-feature-workflow/assets/交付文档.md
-  s_1f37b6a583210f::t_402f427dc9629f 15
+  h_82a5b866197337 15
 drama-ios-feature-workflow/assets/决策日志.md
-  s_1f37b6a583210f::t_b94443e46e9a04 7,9-10,15,17,19,24-25
+  h_82a5b866197337 7,9-10,15,17,19,24-25
 drama-ios-feature-workflow/assets/快照索引.md
-  s_1f37b6a583210f::t_49627fe7a07967 8,14-19,31,34-35
+  h_82a5b866197337 8,14-19,31,34-35
 drama-ios-feature-workflow/assets/技术方案.md
-  s_1f37b6a583210f::t_57965617f8ce5b 7,9,17,24-31
+  h_82a5b866197337 7,9,17,24-31
 drama-ios-feature-workflow/assets/计划审批.md
-  s_1f37b6a583210f::t_a74a8f4be05572 5-7,9,17-18,22-23
+  h_82a5b866197337 5-7,9,17-18,22-23
 drama-ios-feature-workflow/assets/需求契约.md
-  s_1f37b6a583210f::t_aa0b20192b43ca 12,23,32,34-38,40,42,44-51,55-56
+  h_82a5b866197337 12,23,32,34-38,40,42,44-51,55-56
 drama-ios-feature-workflow/assets/需求接收.md
-  s_1f37b6a583210f::t_acf50582b9a988 43
+  h_82a5b866197337 43
+drama-ios-feature-workflow/references/工作流说明.md
+  h_82a5b866197337 15-21,24,26-39,51-57,60,71-83,85-86,100,104,106,108,118-124,126,133-135,137,139,144-153,155-157,159,161,163,165-166,181,183,193-200,202,206,208,210-212,214,218,220,222-224,226-228,236,240,260,262,266,268,270,272,274,280-281,287,291
 ---
 {
   "schema_version": "authorship/3.0.0",
-  "git_ai_version": "1.6.12",
+  "git_ai_version": "1.6.22",
   "base_commit_sha": "9b5c688e96e0d442db47242a2f3c4900a90d8371",
   "prompts": {},
   "logical_commit_id": "9b5c688e96e0d442db47242a2f3c4900a90d8371",
-  "sessions": {
-    "s_1f37b6a583210f": {
-      "agent_id": {
-        "tool": "codex",
-        "id": "019f5f7d-c2f2-7f42-8ca4-c1aa724d9681",
-        "model": "gpt-5.6-terra"
-      },
-      "human_author": "jumpingfrog0 <jumpingfrog0@gmail.com>"
+  "humans": {
+    "h_82a5b866197337": {
+      "author": "jumpingfrog0 <jumpingfrog0@gmail.com>"
     }
   }
 }
