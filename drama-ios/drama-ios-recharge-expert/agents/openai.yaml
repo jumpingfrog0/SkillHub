@@ -1,0 +1,4 @@
+interface:
+  display_name: "Drama iOS Recharge Expert"
+  short_description: "Guide high-risk recharge changes with evidence"
+  default_prompt: "Use $drama-ios-recharge-expert to investigate this recharge change and produce a risk-ranked change contract."
