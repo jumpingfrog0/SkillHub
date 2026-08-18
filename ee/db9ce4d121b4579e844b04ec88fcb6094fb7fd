@@ -1,0 +1,21 @@
+common/feature-discovery/SKILL.md
+  h_82a5b866197337 3,8,10,14-18,20-30,33,40-45,47-54,56,58,60,62,64-66,68,70,72,74,76-81,83-93,96-102,105-119,121
+common/feature-discovery/references/business-doc-template.md
+  h_82a5b866197337 4-5
+common/feature-discovery/references/famo-cross-platform.md
+  h_82a5b866197337 1-89
+common/feature-discovery/references/technical-implementation-template.md
+  h_82a5b866197337 4-5
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "eedb9ce4d121b4579e844b04ec88fcb6094fb7fd",
+  "prompts": {},
+  "logical_commit_id": "eedb9ce4d121b4579e844b04ec88fcb6094fb7fd",
+  "humans": {
+    "h_82a5b866197337": {
+      "author": "jumpingfrog0 <jumpingfrog0@gmail.com>"
+    }
+  }
+}
