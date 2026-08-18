@@ -1,0 +1,21 @@
+drama-ios/implement-ui-from-design-images/SKILL.md
+  h_82a5b866197337 3,8,12-16,21,23-24,26,32-33,35,39,41-44,46-52,54,56,58-60,63,65,72-118,121,123-128,130,132-134,136,138-143,145,147-150,152,154,156-161,163,165-168,170,172-176,178,180-183,185,187,189-192,196,200,202-204,210-211,215
+drama-ios/implement-ui-from-design-images/agents/openai.yaml
+  h_82a5b866197337 3-4
+drama-ios/implement-ui-from-design-images/scripts/design_fingerprint.py
+  h_82a5b866197337 1-90
+drama-ios/implement-ui-from-design-images/scripts/test_design_fingerprint.py
+  h_82a5b866197337 1-91
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "fc0efd205f318bd7a615cfe1a77608ab69f9c1a9",
+  "prompts": {},
+  "logical_commit_id": "fc0efd205f318bd7a615cfe1a77608ab69f9c1a9",
+  "humans": {
+    "h_82a5b866197337": {
+      "author": "jumpingfrog0 <jumpingfrog0@gmail.com>"
+    }
+  }
+}
