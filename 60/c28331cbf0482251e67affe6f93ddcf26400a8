@@ -1,0 +1,25 @@
+common/ipa-similarity-detection/SKILL.md
+  h_82a5b866197337 1-155
+common/ipa-similarity-detection/noise/noise_strings.json
+  h_82a5b866197337 1-110250
+common/ipa-similarity-detection/scripts-reference.md
+  h_82a5b866197337 1-271
+common/ipa-similarity-detection/scripts/compare.py
+  h_82a5b866197337 1-376
+common/ipa-similarity-detection/scripts/extract.py
+  h_82a5b866197337 1-560
+common/ipa-similarity-detection/scripts/extract_noise.py
+  h_82a5b866197337 1-141
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "60c28331cbf0482251e67affe6f93ddcf26400a8",
+  "prompts": {},
+  "logical_commit_id": "60c28331cbf0482251e67affe6f93ddcf26400a8",
+  "humans": {
+    "h_82a5b866197337": {
+      "author": "jumpingfrog0 <jumpingfrog0@gmail.com>"
+    }
+  }
+}
