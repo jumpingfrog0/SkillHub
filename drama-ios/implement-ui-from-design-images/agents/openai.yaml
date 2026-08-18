@@ -1,4 +1,4 @@
 interface:
   display_name: "从设计图实施 UI"
-  short_description: "精读本地设计图并形成可实施的 UI 结构、资源和验证方案"
-  default_prompt: "使用 $implement-ui-from-design-images 精读 design_images 并形成 UI 实施与验证结论。"
+  short_description: "精读并缓存本地设计事实，形成可实施的 UI 与资源方案"
+  default_prompt: "使用 $implement-ui-from-design-images 精读 design_images，复用设计缓存并形成 UI 实施结论。"
