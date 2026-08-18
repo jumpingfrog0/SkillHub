@@ -1,0 +1,20 @@
+drama-ios/drama-ios-feature-workflow-v2/agents/openai.yaml
+  s_53dfc90285dd9b::t_5830ba4ff09b55 1-4
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "875f1dc53c8d28ced6dbb3d149af6593713bda93",
+  "prompts": {},
+  "logical_commit_id": "875f1dc53c8d28ced6dbb3d149af6593713bda93",
+  "sessions": {
+    "s_53dfc90285dd9b": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a00f97-37b2-70c2-8266-0b94317e1556",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "jumpingfrog0 <jumpingfrog0@gmail.com>"
+    }
+  }
+}
