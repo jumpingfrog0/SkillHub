@@ -1,0 +1,20 @@
+drama-ios/drama-ios-recharge-expert/agents/openai.yaml
+  s_0c17176a821cbc::t_c142f48557af44 1-4
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "e53354b684a906e4f82608271e5927ed32ddacae",
+  "prompts": {},
+  "logical_commit_id": "e53354b684a906e4f82608271e5927ed32ddacae",
+  "sessions": {
+    "s_0c17176a821cbc": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a00ef5-295f-7261-aafb-28214f653e25",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "jumpingfrog0 <jumpingfrog0@gmail.com>"
+    }
+  }
+}
